@@ -1,0 +1,6 @@
+cat /etc/passwd 
+cat /etc/group 
+username UID, GID
+root user has UID=0
+useraccount, superaccount(root), system accounts ( UID < 100 or between 500 and 1000)
+
