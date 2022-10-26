@@ -2,5 +2,27 @@ cat /etc/passwd
 cat /etc/group 
 username UID, GID
 root user has UID=0
-useraccount, superaccount(root), system accounts ( UID < 100 or between 500 and 1000)
+useraccount, superaccount(root), system accounts ( UID < 100 or between 500 and 1000), service accounts
+id command, who command, su -c or sudo ( /etc/sudoers) 
+/usr/sbin/nologin --shell to prevent login as root
+
+SUDO components
+1. User or group
+2. hosts 
+3. User
+4. Command
+
+HELP
+command --help and man command and info command ( /usr/share/doc)  or apropos hostname
+mandb to refresh manual pages
+ssh -V ( version)
+ssh -v ( Verbose)
+ls -ltrA ( hideen files)
+sudo mandb ( to fix apropos issue)
+apropos "NFS mounts" 
+------------------------------------------
+
+
+
+
 
