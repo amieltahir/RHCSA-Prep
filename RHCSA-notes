@@ -23,6 +23,120 @@ apropos "NFS mounts"
 ------------------------------------------
 
 
+stat filename
+hard links --> ln path_to_file path_to_link --> only on files not folders --> only on the same filesystem
+
+
+read link soft link
+soft links --> ln -s path_to_file path_to_link --> to files and folders
+
+rwxrwxrwx 
+owner,group,others
+
+r 4
+w 2
+x 1   
+
+
+Stickybit, suid,guid..
+
+chmod u+s,g+s,o+t /home/bob/datadir
+
+
+-----------------
+
+find /dev/ -mmin +5  -- modified in the last 5 mins
+chmod g-w file
+
+sudo find /var/log/ -perm -g=w ! -perm /o=rw > /home/bob/data.txt
+
+Terminal 1
+
+
+Find files/directories under /var/log/ directory that the group can write to, but others cannot read or write to it. Save the list of the files/directories (with complete parent path) in /home/bob/data.txt file.
+
+sudo find /var/log/ -perm -g=w ! -perm /o=rw > /home/bob/data.txt
+
+sudo find /usr/share -name dogs.txt > /home/bob/dogs
+
+sudo find /var -type d -name pets > /home/bob/pets.txt
+
+sudo find /usr -type f -perm 0640 > /home/bob/.opt/permissions.txt
+
+sudo find /usr -type f -mmin -120
+
+sudo find /var -type f -mmin -30
+
+sudo find /var -type f -size 20M
+
+Find all files between 5mb and 10mb in the /usr directory and save the output (along with parent path) in home/bob/size.txt file.
+
+sudo find /var -type f -size +5M -size -10M > /home/bob/size.txt
+
+
+
+rwxr-xr-x -->  chmod 0755 some_directory/
+
+------------
+
+cat file 
+tac file
+
+sed -i 's/canada/sudan/g' file.txt
+sed -i 's/disabled/enabled/gi' /home/bob/values.conf   -- ignore case sensitivity 
+sed -i '500,2000s/enabled/disabled/g' /home/bob/values.conf  -- from line 5000 to 2000
+
+cut -c ' ' -f 1 file.txt --> prints out first column that was space separated
+cut -c ',' -f 3 file.txt --> prints out third column that was comma separated
+
+uniq countries.txt
+sort countries.txt | uniq
+
+diff file1 file2
+diff -c file1 file2
+diff -y file1 file2
+sdiff file1 file2
+
+----
+
+grep -r 'CentOS' /etc   -- recursive
+grep -i --> sensitve case search
+grep -i w --> words
+grep -io --> only matching
+
+
+----
+
+^ $ . * + {} ? | [] () [^]
+
+grep '^Pass' /etc/passwd ---> first occurence in line.
+grep 'sam$' /etc/passwd --> will print end of line occurence
+grep -wr 'c.t' /etc --> print words like cat and cut 
+'\.' --> escape special characters
+grep -r 'let*' /etc/  ---> will print le, let, lett
+* --> match the previous element 0 or more times
+grep -r '/.*/' /etc ---> prints /usr/local/
++ --> match the previous element one or more times
+grep -r '0\+' /etc/ ---> prints 0 and 0000 
+{} --> previous element can exist this many times
+egrep -r '0{3,} /etc/ ---> prints 000,0000
+| --> match one thing or the other
+egrep -r 'enabled|disabled' /etc/
+[] : ranges or sets  --> [a-z][0-9][abz954]
+egrep -r 'c[au]t' /etc --> cat or cut
+egrep -r '/dev/[a-z]*' /etc -->  /dev/twa not /dev/twa0
+egrep -r '/dev/[a-z]*[0-9]' /etc --> /dev/twa not /dev/twa0
+fix it with optional '?'
+egrep -r '/dev/[a-z]*[0-9]?' /etc --> /dev/sda1
+egrep -r '/dev/(([a-z]|[A-Z])*[0-9]*?)*' /etc --> /dev/ttyd1
+
+
+
+
+
+
+
+
 
 
 
